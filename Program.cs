@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 
@@ -7,12 +8,15 @@ namespace MyApp;
 
 static class Program
 {
-    static Vector2 pos = new Vector2(5, 5);
+    private static Vector2 pos = new Vector2(5, 5);
 
-    static Vector2 direction = new Vector2(0, 1);
+    private static Vector2 direction = new Vector2(0, 1);
 
-    static bool gameover = false;
-    static void Main()
+    private static bool gameover = false;
+
+    private const int xlength = 9;
+    private const  int ylength = 9;
+    public static void Main()
     {
         Console.CursorVisible = false;
         Console.Clear();
@@ -68,9 +72,9 @@ static class Program
     {
         pos += direction;
 
-        if (pos.X > 8) { pos.X = 8; }
+        if (pos.X >= xlength) { pos.X = xlength - 1; }
         if (pos.X < 0) { pos.X = 0; }
-        if (pos.Y > 8) { pos.Y = 8; }
+        if (pos.Y >= ylength) { pos.Y = xlength - 1; }
         if (pos.Y < 0) { pos.Y = 0; }
     }
 
@@ -84,11 +88,11 @@ static class Program
     private static string NextFrame()
     {
         StringBuilder output = new StringBuilder();
-        for (int i = 0; i < 9; i++)
+        for (int y = 0; y < ylength; y++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int x = 0; x < xlength; x++)
             {
-                if (i == pos.Y && j == pos.X)
+                if (y == pos.Y && x == pos.X)
                 {
                     output.Append("#");
                 }
@@ -98,7 +102,6 @@ static class Program
                 }
             }
             output.Append("\n");
-
         }
         return output.ToString();
     }
