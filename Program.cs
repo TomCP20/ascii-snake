@@ -10,12 +10,12 @@ static class Program
 {
     private static Vector2 pos = new Vector2(5, 5);
 
-    private static Vector2 direction = new Vector2(0, 1);
+    private static Vector2 direction = new Vector2(1, 0);
 
     private static bool gameover = false;
 
-    private const int xlength = 9;
-    private const  int ylength = 9;
+    private const int xlength = 30;
+    private const  int ylength = 10;
     public static void Main()
     {
         Console.CursorVisible = false;
@@ -27,7 +27,7 @@ static class Program
 
             Render();
 
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
         }
         Console.WriteLine("Thanks for playing!");
         Console.CursorVisible = true;
@@ -74,7 +74,7 @@ static class Program
 
         if (pos.X >= xlength) { pos.X = xlength - 1; }
         if (pos.X < 0) { pos.X = 0; }
-        if (pos.Y >= ylength) { pos.Y = xlength - 1; }
+        if (pos.Y >= ylength) { pos.Y = ylength - 1; }
         if (pos.Y < 0) { pos.Y = 0; }
     }
 
