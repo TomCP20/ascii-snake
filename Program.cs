@@ -12,13 +12,11 @@ static class Program
 
         while (!board.gameover)
         {
+            Thread.Sleep(300);
             board.Update();
-
             string next = board.NextFrame();
             Console.SetCursorPosition(0, 0);
             Console.WriteLine(next);
-
-            Thread.Sleep(300);
         }
         Console.WriteLine("Thanks for playing!");
         Console.CursorVisible = true;
