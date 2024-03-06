@@ -146,6 +146,6 @@ static class Program
         return new Vector2(rand.Next(xlength), rand.Next(ylength));
     }
 }
-#TODO add gameover.
-#TODO add score display.
-#TODO refactor.
+// TODO add gameover.
+// TODO add score display.
+// TODO refactor.
