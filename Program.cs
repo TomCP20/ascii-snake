@@ -81,10 +81,11 @@ static class Program
     {
         Vector2 head = snake[snake.Count - 1] + direction;
 
-        if (head.X >= xlength) { head.X = xlength - 1; }
-        if (head.X < 0) { head.X = 0; }
-        if (head.Y >= ylength) { head.Y = ylength - 1; }
-        if (head.Y < 0) { head.Y = 0; }
+        if (head.X >= xlength || head.X < 0 || head.Y >= ylength || head.Y < 0)
+        {
+            gameover = true;
+            return;
+        }
 
         snake.Add(head);
 
