@@ -81,7 +81,7 @@ static class Program
     {
         Vector2 head = snake[snake.Count - 1] + direction;
 
-        if (head.X >= xlength || head.X < 0 || head.Y >= ylength || head.Y < 0)
+        if (head.X >= xlength || head.X < 0 || head.Y >= ylength || head.Y < 0 || (snake.Contains(head) && !direction.Equals(new Vector2(0, 0))))
         {
             gameover = true;
             return;
@@ -113,12 +113,12 @@ static class Program
 
     private static string NextFrame()
     {
-        int score = snake.Count-1;
+        int score = snake.Count - 1;
         string scoreDisplay = $"Score: {score}";
 
         StringBuilder output = new StringBuilder();
         output.Append(scoreDisplay);
-        output.Append(new string('.', xlength+2-scoreDisplay.Length));
+        output.Append(new string('.', xlength + 2 - scoreDisplay.Length));
         output.Append("\n");
         for (int y = 0; y < ylength; y++)
         {
@@ -142,7 +142,7 @@ static class Program
             output.Append(".");
             output.Append("\n");
         }
-        output.Append(new string('.', xlength+2));
+        output.Append(new string('.', xlength + 2));
         return output.ToString();
     }
 
@@ -151,5 +151,4 @@ static class Program
         return new Vector2(rand.Next(xlength), rand.Next(ylength));
     }
 }
-// TODO add gameover.
 // TODO refactor.
