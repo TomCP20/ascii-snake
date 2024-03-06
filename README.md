@@ -1,6 +1,6 @@
-# ascii-snake
+# Ascii Snake
 
-The snake game rendered with ascii art.
+The snake game rendered with ASCII art.
 
 ## Controls
 
