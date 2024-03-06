@@ -8,7 +8,7 @@ namespace MyApp;
 
 static class Program
 {
-    private static Vector2[] snake = [new Vector2(5, 5)];
+    private static List<Vector2> snake = [new Vector2(5, 5)];
 
     private static Vector2 direction = new Vector2(1, 0);
 
@@ -70,12 +70,15 @@ static class Program
 
     private static void UpdatePos()
     {
-        snake[0] += direction;
+        Vector2 head = snake[0] + direction;
 
-        if (snake[0].X >= xlength) { snake[0].X = xlength - 1; }
-        if (snake[0].X < 0) { snake[0].X = 0; }
-        if (snake[0].Y >= ylength) { snake[0].Y = ylength - 1; }
-        if (snake[0].Y < 0) { snake[0].Y = 0; }
+        if (head.X >= xlength) { head.X = xlength - 1; }
+        if (head.X < 0) { head.X = 0; }
+        if (head.Y >= ylength) { head.Y = ylength - 1; }
+        if (head.Y < 0) { head.Y = 0; }
+
+        snake.Add(head);
+        snake.RemoveAt(0);
     }
 
     private static void Render()
@@ -92,7 +95,7 @@ static class Program
         {
             for (int x = 0; x < xlength; x++)
             {
-                if (snake.Any(s => y == s.Y && x == s.X ))
+                if (snake.Exists(s => y == s.Y && x == s.X ))
                 {
                     output.Append("#");
                 }
