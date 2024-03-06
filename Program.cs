@@ -55,16 +55,28 @@ static class Program
             switch (key)
             {
                 case ConsoleKey.W:
-                    direction = new Vector2(0, -1);
+                    if (!direction.Equals(new Vector2(0, 1)))
+                    {
+                        direction = new Vector2(0, -1);
+                    }
                     break;
                 case ConsoleKey.A:
-                    direction = new Vector2(-1, 0);
+                    if (!direction.Equals(new Vector2(1, 0)))
+                    {
+                        direction = new Vector2(-1, 0);
+                    }
                     break;
                 case ConsoleKey.S:
-                    direction = new Vector2(0, 1);
+                    if (!direction.Equals(new Vector2(0, -1)))
+                    {
+                        direction = new Vector2(0, 1);
+                    }
                     break;
                 case ConsoleKey.D:
-                    direction = new Vector2(1, 0);
+                    if (!direction.Equals(new Vector2(-1, 0)))
+                    {
+                        direction = new Vector2(1, 0);
+                    }
                     break;
                 case ConsoleKey.X:
                     gameover = true;
