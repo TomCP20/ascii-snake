@@ -91,7 +91,7 @@ static class Program
 
         bool hasEaten = false;
 
-        if (snake.Exists(s => s.Equals(food)))
+        if (snake.Contains(food))
         {
             hasEaten = true;
             food = randomPos();
@@ -126,7 +126,7 @@ static class Program
             for (int x = 0; x < xlength; x++)
             {
                 Vector2 pos = new Vector2(x, y);
-                if (snake.Exists(s => s.Equals(pos)))
+                if (snake.Contains(pos))
                 {
                     output.Append("#");
                 }
