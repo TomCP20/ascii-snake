@@ -8,9 +8,14 @@ namespace MyApp;
 
 static class Program
 {
-    private static List<Vector2> snake = [new Vector2(5, 5)];
+    private static readonly Random rand = new();
+
+    private static List<Vector2> snake= [];
+
 
     private static Vector2 direction = new Vector2(0, 0);
+
+    private static Vector2 food = new();
 
     private static bool gameover = false;
 
@@ -20,6 +25,10 @@ static class Program
     {
         Console.CursorVisible = false;
         Console.Clear();
+
+        snake = [randomPos()];
+        food = randomPos();
+
         while (!gameover)
         {
             Input();
@@ -77,6 +86,8 @@ static class Program
         if (head.Y >= ylength) { head.Y = ylength - 1; }
         if (head.Y < 0) { head.Y = 0; }
 
+        
+
         snake.Add(head);
         snake.RemoveAt(0);
     }
@@ -95,9 +106,14 @@ static class Program
         {
             for (int x = 0; x < xlength; x++)
             {
-                if (snake.Exists(s => y == s.Y && x == s.X))
+                Vector2 pos = new Vector2(x, y);
+                if (snake.Exists(s => s.Equals(pos)))
                 {
                     output.Append("#");
+                }
+                else if (pos.Equals(food))
+                {
+                    output.Append("@");
                 }
                 else
                 {
@@ -107,5 +123,10 @@ static class Program
             output.Append("\n");
         }
         return output.ToString();
+    }
+
+    private static Vector2 randomPos() 
+    {
+        return new Vector2(rand.Next(xlength), rand.Next(ylength));
     }
 }
