@@ -112,8 +112,12 @@ static class Program
 
     private static string NextFrame()
     {
+        int score = snake.Count-1;
+        string scoreDisplay = $"Score: {score}";
+
         StringBuilder output = new StringBuilder();
-        output.Append(new string('.', xlength+2));
+        output.Append(scoreDisplay);
+        output.Append(new string('.', xlength+2-scoreDisplay.Length));
         output.Append("\n");
         for (int y = 0; y < ylength; y++)
         {
@@ -147,5 +151,4 @@ static class Program
     }
 }
 // TODO add gameover.
-// TODO add score display.
 // TODO refactor.
