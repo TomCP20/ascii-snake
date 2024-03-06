@@ -79,17 +79,28 @@ static class Program
 
     private static void UpdatePos()
     {
-        Vector2 head = snake[0] + direction;
+        Vector2 head = snake.Last() + direction;
 
         if (head.X >= xlength) { head.X = xlength - 1; }
         if (head.X < 0) { head.X = 0; }
         if (head.Y >= ylength) { head.Y = ylength - 1; }
         if (head.Y < 0) { head.Y = 0; }
 
-        
-
         snake.Add(head);
-        snake.RemoveAt(0);
+
+        bool hasEaten = false;
+
+        if (snake.Exists(s => s.Equals(food)))
+        {
+            hasEaten = true;
+            food = randomPos();
+        }
+
+        if (!hasEaten)
+        {
+            snake.RemoveAt(0);
+        }
+        
     }
 
     private static void Render()
