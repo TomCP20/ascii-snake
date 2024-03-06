@@ -36,7 +36,7 @@ static class Program
 
             Render();
 
-            Thread.Sleep(500);
+            Thread.Sleep(300);
         }
         Console.WriteLine("Thanks for playing!");
         Console.CursorVisible = true;
@@ -113,8 +113,11 @@ static class Program
     private static string NextFrame()
     {
         StringBuilder output = new StringBuilder();
+        output.Append(new string('.', xlength+2));
+        output.Append("\n");
         for (int y = 0; y < ylength; y++)
         {
+            output.Append(".");
             for (int x = 0; x < xlength; x++)
             {
                 Vector2 pos = new Vector2(x, y);
@@ -128,11 +131,13 @@ static class Program
                 }
                 else
                 {
-                    output.Append(".");
+                    output.Append(" ");
                 }
             }
+            output.Append(".");
             output.Append("\n");
         }
+        output.Append(new string('.', xlength+2));
         return output.ToString();
     }
 
@@ -141,3 +146,6 @@ static class Program
         return new Vector2(rand.Next(xlength), rand.Next(ylength));
     }
 }
+#TODO add gameover.
+#TODO add score display.
+#TODO refactor.
