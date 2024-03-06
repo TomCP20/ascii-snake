@@ -10,12 +10,12 @@ static class Program
 {
     private static List<Vector2> snake = [new Vector2(5, 5)];
 
-    private static Vector2 direction = new Vector2(1, 0);
+    private static Vector2 direction = new Vector2(0, 0);
 
     private static bool gameover = false;
 
     private const int xlength = 30;
-    private const  int ylength = 10;
+    private const int ylength = 10;
     public static void Main()
     {
         Console.CursorVisible = false;
@@ -95,7 +95,7 @@ static class Program
         {
             for (int x = 0; x < xlength; x++)
             {
-                if (snake.Exists(s => y == s.Y && x == s.X ))
+                if (snake.Exists(s => y == s.Y && x == s.X))
                 {
                     output.Append("#");
                 }
