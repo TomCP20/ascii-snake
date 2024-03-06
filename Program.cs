@@ -10,7 +10,7 @@ static class Program
 {
     private static readonly Random rand = new();
 
-    private static List<Vector2> snake= [];
+    private static List<Vector2> snake = [];
 
 
     private static Vector2 direction = new Vector2(0, 0);
@@ -79,7 +79,7 @@ static class Program
 
     private static void UpdatePos()
     {
-        Vector2 head = snake.Last() + direction;
+        Vector2 head = snake[snake.Count - 1] + direction;
 
         if (head.X >= xlength) { head.X = xlength - 1; }
         if (head.X < 0) { head.X = 0; }
@@ -100,7 +100,7 @@ static class Program
         {
             snake.RemoveAt(0);
         }
-        
+
     }
 
     private static void Render()
@@ -136,7 +136,7 @@ static class Program
         return output.ToString();
     }
 
-    private static Vector2 randomPos() 
+    private static Vector2 randomPos()
     {
         return new Vector2(rand.Next(xlength), rand.Next(ylength));
     }
